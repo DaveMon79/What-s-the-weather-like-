@@ -1,0 +1,172 @@
+/**Basic styling for page**/
+
+* {
+    box-sizing: border-box;
+    padding: 0vh;
+    margin: 0vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/** Adds background image to header **/
+.header {
+    background-image: url(./sky.jpg);
+    background-size: cover;
+}
+
+/** Styles header font outside span tag **/
+.header-h1 {
+    padding: 0.5vh;
+    padding-left: 5vh;
+    font-size: 10vh;
+    font-weight: lighter;
+    color: antiquewhite;
+}
+
+/** Styles header font intside span tag  **/
+.header-h1 span {
+    font-size: 6vh;
+    font-weight: lighter;
+    color: darkgray;
+}
+
+/** positions search & search results box **/
+.search-city {
+    width: 15rem;
+    margin-left: 2rem;
+    float: left;
+
+
+}
+
+/** styles search h3 font section **/
+.search-h3 {
+    font-size: 4vh;
+    margin-top: 3vh;
+    font-weight: lighter;
+    
+
+}
+
+/** styles input box **/
+.input-box {
+    margin: 1.5vh 0vh;
+    width: 15rem;
+    height: 2rem;
+    padding-left: 1vh;
+    border-radius: 5px;
+    
+    
+}
+
+
+/** styles search button **/
+.search-button {
+    background-color: black;
+    width: 15rem;
+    font-size: 3vh;
+    color: white;
+    border: none;
+    margin-bottom: 2vh;
+    height: 2rem;
+    padding: 3px;
+    border-radius: 5px;
+    
+    
+   
+}
+
+
+/** styles the stored search list **/
+.search-results li {
+    background-color: rgb(167, 173, 180);
+    width: 15rem;
+    font-size: 3vh;
+    color: white;
+    border: none;
+    margin-top: 2vh;
+    height: 2rem;
+    padding: 3px;
+    list-style: none;
+    text-align: center;
+    border-radius: 5px;
+    
+
+}
+
+
+/** makes search button increase in size when you hover over it**/
+.search-button:hover {
+    transform: scale(1.1);
+  }
+
+  /** makes saved search list increase in size when you hover over it**/
+.search-results li:hover {
+    transform: scale(1.1);
+  }
+
+/** Positions current weather section **/
+.current-weather {
+    float: right;
+    width: 75%;
+    margin-top: 2rem;
+    margin-right: 3rem;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+/** styes h3 font in current weather section **/
+.current-weather div h3 {
+    padding: 1.5vh;
+    font-size: 4vh;
+    font-weight: lighter;
+}
+
+
+/** Positions five day forecast section **/
+.five-day {
+    float: right;
+    width: 75%;
+    margin-top: 2vh;
+    margin-right: 3rem;
+    border: solid 1px;
+    border-radius: 5px;
+
+}
+
+/** Styles h3 font in five day forecast section  **/
+.five-day div h3 {
+    font-size: 4vh;
+    font-weight: lighter;
+    padding: 1.5vh;
+
+}
+
+
+/** styles blocks which will contain the weather **/
+.five-day-blocks {
+    display: inline-flex;
+    justify-content: space-around;
+    width: 17%;
+    background-image: url(./sky.webp);
+    min-height: 12rem;
+    margin-left: 3.5vh;
+    border-radius: 5px;
+    
+}
+
+/** add margin to the top and bottom of div which contains the blocks**/
+.blocks-div {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+
+/** styles font within weather blocks **/
+.five-day-blocks ul li {
+    list-style: none;
+    color: antiquewhite;
+    font-size: 3vh ;
+    margin-top: 1.2vh;  
+    text-align: left;
+    
+}
