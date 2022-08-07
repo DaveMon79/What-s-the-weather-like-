@@ -31,7 +31,7 @@
 
 /** positions search & search results box **/
 .search-city {
-    width: 15rem;
+    width: 35vh;
     margin-left: 2rem;
     float: left;
 
@@ -50,7 +50,7 @@
 /** styles input box **/
 .input-box {
     margin: 1.5vh 0vh;
-    width: 15rem;
+    width: 35vh;
     height: 2rem;
     padding-left: 1vh;
     border-radius: 5px;
@@ -62,7 +62,7 @@
 /** styles search button **/
 .search-button {
     background-color: black;
-    width: 15rem;
+    width: 35vh;
     font-size: 3vh;
     color: white;
     border: none;
@@ -79,7 +79,7 @@
 /** styles the stored search list **/
 .search-results li {
     background-color: rgb(167, 173, 180);
-    width: 15rem;
+    width: 35vh;
     font-size: 3vh;
     color: white;
     border: none;
@@ -92,6 +92,7 @@
     
 
 }
+
 
 
 /** makes search button increase in size when you hover over it**/
@@ -115,10 +116,12 @@
 }
 
 /** styes h3 font in current weather section **/
-.current-weather div h3 {
+.current-weather div ul li {
     padding: 1.5vh;
+    padding-left: 2vh;
     font-size: 4vh;
     font-weight: lighter;
+    list-style: none;
 }
 
 
