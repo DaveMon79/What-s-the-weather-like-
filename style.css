@@ -7,6 +7,21 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+
+.red {
+    background-color: red;
+}
+
+.orange{
+    background-color: orange;
+
+}
+
+.green {
+    background-color: green;
+
+}
+
 /** Adds background image to header **/
 .header {
     background-image: url(./sky.jpg);
@@ -94,7 +109,6 @@
 }
 
 
-
 /** makes search button increase in size when you hover over it**/
 .search-button:hover {
     transform: scale(1.1);
@@ -113,16 +127,19 @@
     margin-right: 3rem;
     border: solid 1px;
     border-radius: 5px;
+    background-image: url(./sky.jpg);
 }
 
 /** styes h3 font in current weather section **/
 .current-weather div ul li {
     padding: 1.5vh;
     padding-left: 2vh;
-    font-size: 4vh;
-    font-weight: lighter;
+    font-size: 3vh;
+    font-weight: bold;
+    color: white;
     list-style: none;
 }
+
 
 
 /** Positions five day forecast section **/
@@ -139,7 +156,7 @@
 /** Styles h3 font in five day forecast section  **/
 .five-day div h3 {
     font-size: 4vh;
-    font-weight: lighter;
+    font-weight: bold;
     padding: 1.5vh;
 
 }
