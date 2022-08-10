@@ -9,9 +9,9 @@ var iconEl = "http://openweathermap.org/img/wn/"
 
 
 
-function searchForecast(url) {
-    console.log(url)
-}
+// function searchForecast(url) {
+//     console.log(url)
+// }
 
 function searchCity() {
     var cityName = document.getElementById("user-input").value;
@@ -32,6 +32,7 @@ function searchCity() {
 
             var url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude={part}&units=metric&appid=" + apiKey
             fiveDayForecast(url)
+            
     
 
         })
@@ -46,9 +47,9 @@ function searchCity() {
     localStorage.setItem("city", JSON.stringify(storedCityNames));
 
 
-
-
 }
+
+
 
 savedCitiesList()
 
@@ -65,55 +66,41 @@ function savedCitiesList() {
 }
 
 
-
-
-
 function fiveDayForecast(fiveDayUrl) {
 
     fetch(fiveDayUrl)
         .then((response) => response.json())
         .then(function (data) {
             console.log(data)
-            var uv = document.getElementById("uv").innerHTML = "UV:  " + data.daily[0].uvi
-
-            if (uv <= 2) {
-                uv.setAttribute(".green")
+            var uv = document.getElementById("uv")
+            var uvi = data.daily[0].uvi
+        
+            if (uvi <= 2) {
+                uv.setAttribute("class", "green")
             }
 
-            else if (uv >= 3 && uv <= 5) {
-                uv.setAttribute(".orange")
+            else if (uvi >= 3 && uvi <= 5) {
+                uv.setAttribute("class", "orange")
             }
-            else if (uv >= 6) {
-                uv.setAttribute(".red")
-            }
-
-
-            for (i = 0; i < 4; i++) {
-                document.querySelector(".day-blocks-" + (i)).innerHTML = "Date:" + (data.daily[i].dt)
-                // var li = document.createElement("LI")
-                // li.setAttribute('class', 'five-day-blocks  blocks-div five-day-blocks ul li')
-                // resultsList.appendChild(li)
-            }
-            for (i = 0; 1 < 4; i++) {
-                document.querySelector("#five-day-text-" + (i)).src = "http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + ".png"
-                // var li = document.createElement("LI")
-                // li.setAttribute('class', 'five-day-blocks  blocks-div five-day-blocks ul li')
-                // resultsList.appendChild(li)
-            }
-            for (i = 0; 1 < 4; i++) {
-                document.querySelector("#five-day-text-" + (i)).innerHTML = "Temp:" + (data.daily[i].temp.day)
-                // var li = document.createElement("LI")
-                // li.setAttribute('class', 'five-day-blocks  blocks-div five-day-blocks ul li')
-                // resultsList.appendChild(li)
-            }
-            for (i = 0; 1 < 4; i++) {
-                document.querySelector("#five-day-text-" + (i)).innerHTML = "Wind:" + (data.daily[i].wind_speed)
-                // var li = document.createElement("LI")
-                // li.setAttribute('class', 'five-day-blocks  blocks-div five-day-blocks ul li')
-                // resultsList.appendChild(li)
+            else if (uvi >= 6) {
+                uv.setAttribute("class", "red")
+                console.log("here")
             }
 
+            uv.innerHTML = "UV:  " + data.daily[0].uvi
 
+            for (i = 0; i < 5; i++) {
+                // var card = document.querySelector("#five-day-date-"+ (i))
+                var day = (data.daily[i].dt)
+                var dateString = moment.unix(day).format("dddd Do MMMM YYYY");
+                var img = document.getElementById("five-day-img-" + i)
+                img.src=`http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}.png`
+                document.querySelector("#five-day-date-"+ (i)).innerHTML =  dateString
+                document.querySelector("#five-day-temp-" + (i)).innerHTML = "Temp:   " + (data.daily[i].temp.day) + "°C"
+                document.querySelector("#five-day-wind-" + (i)).innerHTML = "Wind:   " + (data.daily[i].wind_speed) + "mph"
+                document.querySelector("#five-day-humidity-" + (i)).innerHTML = "Hum:   " + (data.daily[i].humidity) + "%"
+
+            }
 
         })
 
@@ -122,8 +109,15 @@ function fiveDayForecast(fiveDayUrl) {
 }
 
 
+function previousSearchHistory () {
+    var localStorageUrl = localStorage.setItem("city", JSON.stringify(storedCityNames));
+    console.log(localStorageUrl)
+
+
+}
+
 searchButton.addEventListener("click", searchCity)
-// resultsList.addEventListener("click", searchCity)
+// resultsList.addEventListener("click", previousSearchHistory)
 
 
 

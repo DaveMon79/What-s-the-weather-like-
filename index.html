@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./Assets/style.css">
     <title>Weather.com</title>
 </head>
 
@@ -31,7 +31,7 @@
         <div class="search-results">
             <ul id="results-list">
             </ul>
-         </div>
+        </div>
     </Section>
 
     <section class="current-weather">
@@ -41,75 +41,72 @@
                 <li id="city">City:</li>
                 <li id="temp">Tempature</li>
                 <li id="wind">Wind speed:</li>
-                <li id="humidity">Humidity</li>    
-                <li id="uv">UV:</li>                
+                <li id="humidity">Humidity</li>
+                <li id="uv">UV:</li>
             </ul>
         </div>
     </section>
 
     <section class="five-day">
         <div>
-            <h3>5 Day forecast</h3>
+            <h2>5 Day forecast</h3>
             <div>
 
                 <div class="blocks-div">
                     <div class="five-day-blocks">
-                        <ul class="day-blocks" id="five-day-text-0">
-                            <li class="date-five"></li>
-                            <li class="Icon-five"></li>
-                            <li class="Tempature-five"></li>
-                            <li class="Wind-five"></li>
-                            <li class="Humidity-five"></li>
-                        </ul>
+                        <div class="day-blocks">
+                            <h3 id="five-day-date-0"></h3>
+                            <img id="five-day-img-0" width="75px" height="75px">
+                            <h3  id="five-day-temp-0"></h3>
+                            <h3 id="five-day-wind-0"></h3>
+                            <h3 id="five-day-humidity-0"></h3>
+                        </div>
                     </div>
 
                     <div class="five-day-blocks">
-                        <ul class="day-blocks" id="five-day-text-1">
-                            <li class="date-five"></li>
-                            <li class="Icon-five"></li>
-                            <li class="Tempature-five"></li>
-                            <li class="Wind-five"></li>
-                            <li class="Humidity-five"></li>
-                        </ul>
+                        <div class="day-blocks">
+                            <h3 id="five-day-date-1"></h3>
+                            <img id="five-day-img-1" width="75px" height="75px">
+                            <h3 id="five-day-temp-1"></h3>
+                            <h3 id="five-day-wind-1"></h3>
+                            <h3 id="five-day-humidity-1"></h3>
+                        </div>
                     </div>
 
                     <div class="five-day-blocks">
-                        <ul class="day-blocks" id="five-day-text-2">
-                            <li class="date-five"></li>
-                            <li class="Icon-five"></li>
-                            <li class="Tempature-five"></li>
-                            <li class="Wind-five"></li>
-                            <li class="Humidity-five"></li>
-                        </ul>
+                        <div class="day-blocks">
+                            <h3 id="five-day-date-2"></h3>
+                            <img id="five-day-img-2" width="75px" height="75px">
+                            <h3 id="five-day-temp-2"></h3>
+                            <h3 id="five-day-wind-2"></h3>
+                            <h3 id="five-day-humidity-2"></h3>
+                        </div>
                     </div>
 
                     <div class="five-day-blocks">
-                        <ul class="day-blocks" id="five-day-text-3">
-                            <li class="date-five"></li>
-                            <li class="Icon-five"></li>
-                            <li class="Tempature-five"></li>
-                            <li class="Wind-five"></li>
-                            <li class="Humidity-five"></li>
-                        </ul>
+                        <div class="day-blocks">
+                            <h3 id="five-day-date-3"></h3>
+                            <img id="five-day-img-3" width="75px" height="75px">
+                            <h3 id="five-day-temp-3"></h3>
+                            <h3 id="five-day-wind-3"></h3>
+                            <h3 id="five-day-humidity-3"></h3>
+                        </div>
                     </div>
 
                     <div class="five-day-blocks">
-                        <ul class="day-blocks" id="five-day-text-4">
-                            <li class="date-five"></li>
-                            <li class="Icon-five"></li>
-                            <li class="Tempature-five"></li>
-                            <li class="Wind-five"></li>
-                            <li class="Humidity-five"></li>
-                        </ul>
+                        <div class="day-blocks">
+                            <h3 id="five-day-date-4"></h3>
+                            <img id="five-day-img-4" width="75px" height="75px">
+                            <h3 id="five-day-temp-4"></h3>
+                            <h3 id="five-day-wind-4"></h3>
+                            <h3 id="five-day-humidity-4"></h3>
+                        </div>
                     </div>
                 </div>
     </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="./script.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./Assets/script.js"></script>
 </body>
 
-</html> 
-
-
+</html>

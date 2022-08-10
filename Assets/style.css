@@ -8,23 +8,9 @@
 }
 
 
-.red {
-    background-color: red;
-}
-
-.orange{
-    background-color: orange;
-
-}
-
-.green {
-    background-color: green;
-
-}
-
 /** Adds background image to header **/
 .header {
-    background-image: url(./sky.jpg);
+    background-image: url(./Img/sky.jpg);
     background-size: cover;
 }
 
@@ -127,7 +113,7 @@
     margin-right: 3rem;
     border: solid 1px;
     border-radius: 5px;
-    background-image: url(./sky.jpg);
+    background-image: url(./Img/sky.jpg);
 }
 
 /** styes h3 font in current weather section **/
@@ -140,7 +126,34 @@
     list-style: none;
 }
 
+/* Makes UV section background color fit behind text */
+#uv {
+    display: inline-block
+}
 
+
+/* color for uv based on safe or not */
+.red {
+    background-color: red;
+    margin: 1vh;
+    border-radius: 5px;
+}
+
+/* color for uv based on safe or not */
+.orange{
+    background-color: orange;
+    margin: 1vh;
+    border-radius: 5px;
+
+}
+
+/* color for uv based on safe or not */
+.green {
+    background-color: green;
+    margin: 1vh;
+    border-radius: 5px;
+
+}
 
 /** Positions five day forecast section **/
 .five-day {
@@ -154,7 +167,7 @@
 }
 
 /** Styles h3 font in five day forecast section  **/
-.five-day div h3 {
+.five-day div h2 {
     font-size: 4vh;
     font-weight: bold;
     padding: 1.5vh;
@@ -167,26 +180,29 @@
     display: inline-flex;
     justify-content: space-around;
     width: 17%;
-    background-image: url(./sky.webp);
+    background-image: url(./Img/sky.webp);
     min-height: 12rem;
     margin-left: 3.5vh;
     border-radius: 5px;
+    color: white;
+    text-align: center;
+    padding: 2vh;
+  
     
 }
 
-/** add margin to the top and bottom of div which contains the blocks**/
+/** adds margin to the top and bottom of div which contains the blocks**/
 .blocks-div {
     margin-top: 3vh;
     margin-bottom: 3vh;
 }
 
 
-/** styles font within weather blocks **/
-.five-day-blocks ul li {
-    list-style: none;
-    color: antiquewhite;
-    font-size: 3vh ;
-    margin-top: 1.2vh;  
-    text-align: left;
-    
+/** styles font and top margin within 5 day weather blocks **/ 
+ .day-blocks h3,
+ .day-blocks img {
+    margin-top: 2vh;
+    font-size: 2.5vh;
+      
 }
+
