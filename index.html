@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts inported from google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -14,12 +15,14 @@
 
 <body>
 
+    <!-- Header div -->
     <header class="header">
         <h1 class="header-h1">weather<span>.com</span></h1>
         <div></div>
         <hr>
     </header>
 
+<!-- This contains the seach input, button and history -->
     <Section class="search-city">
         <div>
             <h3 class="search-h3">Search for city:</h3>
@@ -34,19 +37,21 @@
         </div>
     </Section>
 
+<!-- Displays today weather -->
     <section class="current-weather">
         <div>
             <ul id="current-weather-list">
-                <li id="date">Date:</li>
-                <li id="city">City:</li>
-                <li id="temp">Tempature</li>
-                <li id="wind">Wind speed:</li>
-                <li id="humidity">Humidity</li>
-                <li id="uv">UV:</li>
+                <li id="date"></li>
+                <li id="city"></li>
+                <li id="temp"></li>
+                <li id="wind"></li>
+                <li id="humidity"></li>
+                <li id="uv"></li>
             </ul>
         </div>
     </section>
 
+    <!-- Displays the 5 day weather forcast -->
     <section class="five-day">
         <div>
             <h2>5 Day forecast</h3>
@@ -105,6 +110,7 @@
                 </div>
     </section>
 
+    <!-- Moment JS linked -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./Assets/script.js"></script>
 </body>

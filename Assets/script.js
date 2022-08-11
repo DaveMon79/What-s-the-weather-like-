@@ -9,16 +9,11 @@ var iconEl = "http://openweathermap.org/img/wn/"
 
 
 
-// function searchForecast(url) {
-//     console.log(url)
-// }
-
-function searchCity() {
+function searchCity(requestUrl) {
     var cityName = document.getElementById("user-input").value;
     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey + "&units=metric";
     fetch(requestUrl)
         .then((response) => response.json())
-        // .then(data => console.log(data));
         .then(function (currentWeatherInfo) {
             console.log(currentWeatherInfo)
             document.getElementById("date").innerHTML = moment().format("dddd Do MMMM YYYY");
@@ -55,12 +50,12 @@ savedCitiesList()
 
 function savedCitiesList() {
 
+    var storedCityNames = JSON.parse(localStorage.getItem("city")) || [];
     for (var i = 0; i < storedCityNames.length; i++) {
         var li = document.createElement("LI")
         li.setAttribute('class', '.search-results li')
         resultsList.appendChild(li)
         li.innerHTML = storedCityNames[i].Name
-        // li.link.href = storedCityNames[i].url
 
     }
 }
@@ -71,9 +66,10 @@ function fiveDayForecast(fiveDayUrl) {
     fetch(fiveDayUrl)
         .then((response) => response.json())
         .then(function (data) {
-            console.log(data)
+         
             var uv = document.getElementById("uv")
             var uvi = data.daily[0].uvi
+            uv.innerHTML = "UV:  " + data.daily[0].uvi
         
             if (uvi <= 2) {
                 uv.setAttribute("class", "green")
@@ -84,13 +80,10 @@ function fiveDayForecast(fiveDayUrl) {
             }
             else if (uvi >= 6) {
                 uv.setAttribute("class", "red")
-                console.log("here")
             }
 
-            uv.innerHTML = "UV:  " + data.daily[0].uvi
 
             for (i = 0; i < 5; i++) {
-                // var card = document.querySelector("#five-day-date-"+ (i))
                 var day = (data.daily[i].dt)
                 var dateString = moment.unix(day).format("dddd Do MMMM YYYY");
                 var img = document.getElementById("five-day-img-" + i)
@@ -110,14 +103,15 @@ function fiveDayForecast(fiveDayUrl) {
 
 
 function previousSearchHistory () {
-    var localStorageUrl = localStorage.setItem("city", JSON.stringify(storedCityNames));
-    console.log(localStorageUrl)
-
+    var storedCityNames =  JSON.parse(localStorage.getItem("city"))
+    var requestUrl = (storedCityNames[i].url)
+    console.log(storedCityNames)
+    searchCity(requestUrl)
 
 }
 
 searchButton.addEventListener("click", searchCity)
-// resultsList.addEventListener("click", previousSearchHistory)
+resultsList.addEventListener("click", previousSearchHistory)
 
 
 

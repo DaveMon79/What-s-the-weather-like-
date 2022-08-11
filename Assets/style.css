@@ -96,19 +96,18 @@
 
 
 /** makes search button increase in size when you hover over it**/
-.search-button:hover {
-    transform: scale(1.1);
-  }
-
-  /** makes saved search list increase in size when you hover over it**/
+.search-button:hover,
 .search-results li:hover {
     transform: scale(1.1);
   }
+
+
 
 /** Positions current weather section **/
 .current-weather {
     float: right;
     width: 75%;
+    min-height: 10vh;
     margin-top: 2rem;
     margin-right: 3rem;
     border: solid 1px;
@@ -206,3 +205,39 @@
       
 }
 
+
+/* Removes float properties from items */
+@media screen and (max-width: 900px) {
+    .five-day,
+    .current-weather,
+    .search-city {
+        float: none;
+        align-content: center;
+        
+    }
+
+    }
+
+  /*sets min width and add margin to the 5 day weather display blocks  */
+@media screen and (max-width: 900px) {
+    .five-day,
+    .current-weather {
+        margin-left: 25px;
+        min-width: 35vh;
+    }
+
+    }
+
+    /* Makes 5 day weather boxes display as flex and sets min width */
+    @media screen and (max-width: 900px) {
+        .five-day,
+        .five-day-blocks {
+            display: flex;
+            flex-wrap: wrap;
+            min-width: 25vh;
+            margin: 2vh;
+
+        }
+        }
+    
+        
