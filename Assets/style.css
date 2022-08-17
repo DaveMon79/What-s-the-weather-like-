@@ -134,14 +134,14 @@
 /* color for uv based on safe or not */
 .red {
     background-color: red;
-    margin: 1vh;
     border-radius: 5px;
+    padding: 3px;
 }
 
 /* color for uv based on safe or not */
 .orange{
     background-color: orange;
-    margin: 1vh;
+    padding: 3px;
     border-radius: 5px;
 
 }
@@ -149,7 +149,7 @@
 /* color for uv based on safe or not */
 .green {
     background-color: green;
-    margin: 1vh;
+    padding: 3px;
     border-radius: 5px;
 
 }

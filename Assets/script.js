@@ -9,63 +9,68 @@ var iconEl = "http://openweathermap.org/img/wn/"
 
 
 
-function userInput () {
+function userInput() {
 
     var cityName = document.getElementById("user-input").value
     searchCity(cityName)
-  
+
+}
+
+
+function previousSearchHistory(event) {
+
+    var cityName = event.target.innerHTML
+    searchCity(cityName)
+
 }
 
 
 function searchCity(cityName) {
-   
+
     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey + "&units=metric";
     var li = document.createElement("LI")
-                li.setAttribute('class', '.search-results li')
-                resultsList.appendChild(li)
-                li.innerHTML = cityName
+    li.setAttribute('class', '.search-results li')
+    resultsList.appendChild(li)
+    li.innerHTML = cityName
 
     apicall(requestUrl)
-   
+
 }
 
 
 
 function apicall(requestUrl) {
- 
+
     fetch(requestUrl)
         .then((response) => response.json())
         .then(function (currentWeatherInfo) {
             document.getElementById("date").innerHTML = moment().format("dddd Do MMMM YYYY");
-            document.getElementById("city").innerHTML = "City:  " + currentWeatherInfo.name
-            document.getElementById("temp").innerHTML = "Tempature:  " + currentWeatherInfo.main.temp_min + "°C"
-            document.getElementById("wind").innerHTML = "Wind speed:  " + currentWeatherInfo.wind.speed + "mph"
-            document.getElementById("humidity").innerHTML = "Humidity:  " + currentWeatherInfo.main.humidity + "%"
+            document.getElementById("city").innerHTML = currentWeatherInfo.name
+            document.getElementById("temp").innerHTML = currentWeatherInfo.main.temp_min + "°C"
+            document.getElementById("wind").innerHTML = currentWeatherInfo.wind.speed + "mph"
+            document.getElementById("humidity").innerHTML = currentWeatherInfo.main.humidity + "%"
 
             var longitude = (currentWeatherInfo.coord.lon)
             var latitude = (currentWeatherInfo.coord.lat)
-
+        
             var url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude={part}&units=metric&appid=" + apiKey
             fiveDayForecast(url)
-             
 
-        })
-
-
+})
+     
 }
 
 
 
+function fiveDayForecast(url) {
 
-function fiveDayForecast(fiveDayUrl) {
-
-    fetch(fiveDayUrl)
+    fetch(url)
         .then((response) => response.json())
         .then(function (data) {
             var uv = document.getElementById("uv")
             var uvi = data.daily[0].uvi
-            uv.innerHTML = "UV:  " + data.daily[0].uvi
-        
+            uv.innerHTML = data.daily[0].uvi
+
             if (uvi <= 2) {
                 uv.setAttribute("class", "green")
             }
@@ -82,8 +87,8 @@ function fiveDayForecast(fiveDayUrl) {
                 var day = (data.daily[i].dt)
                 var dateString = moment.unix(day).format("dddd Do MMMM YYYY");
                 var img = document.getElementById("five-day-img-" + i)
-                img.src=`http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}.png`
-                document.querySelector("#five-day-date-"+ (i)).innerHTML =  dateString
+                img.src = `http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}.png`
+                document.querySelector("#five-day-date-" + (i)).innerHTML = dateString
                 document.querySelector("#five-day-temp-" + (i)).innerHTML = "Temp:   " + (data.daily[i].temp.day) + "°C"
                 document.querySelector("#five-day-wind-" + (i)).innerHTML = "Wind:   " + (data.daily[i].wind_speed) + "mph"
                 document.querySelector("#five-day-humidity-" + (i)).innerHTML = "Hum:   " + (data.daily[i].humidity) + "%"
@@ -96,13 +101,6 @@ function fiveDayForecast(fiveDayUrl) {
 
 }
 
-
-function previousSearchHistory (event) {
-
-    var cityName = event.target.innerHTML
-    searchCity(cityName)
-   
-}
 
 
 
