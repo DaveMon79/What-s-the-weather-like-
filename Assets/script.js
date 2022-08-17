@@ -4,18 +4,38 @@ var currentWeatherList = document.getElementById("current-weather-list")
 var resultsList = document.getElementById("results-list")
 var storedCityNames = []
 var apiKey = "27c15d159618d2da5af0904826c56b48"
-var storedCityNames = JSON.parse(localStorage.getItem("city")) || [];
 var iconEl = "http://openweathermap.org/img/wn/"
 
 
 
-function searchCity(requestUrl) {
-    var cityName = document.getElementById("user-input").value;
+
+function userInput () {
+
+    var cityName = document.getElementById("user-input").value
+    searchCity(cityName)
+  
+}
+
+
+function searchCity(cityName) {
+   
     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey + "&units=metric";
+    var li = document.createElement("LI")
+                li.setAttribute('class', '.search-results li')
+                resultsList.appendChild(li)
+                li.innerHTML = cityName
+
+    apicall(requestUrl)
+   
+}
+
+
+
+function apicall(requestUrl) {
+ 
     fetch(requestUrl)
         .then((response) => response.json())
         .then(function (currentWeatherInfo) {
-            console.log(currentWeatherInfo)
             document.getElementById("date").innerHTML = moment().format("dddd Do MMMM YYYY");
             document.getElementById("city").innerHTML = "City:  " + currentWeatherInfo.name
             document.getElementById("temp").innerHTML = "Tempature:  " + currentWeatherInfo.main.temp_min + "°C"
@@ -27,38 +47,14 @@ function searchCity(requestUrl) {
 
             var url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude={part}&units=metric&appid=" + apiKey
             fiveDayForecast(url)
-            
-    
+             
 
         })
 
 
-    currentCityInfo = {
-        Name: cityName,
-        url: requestUrl
-    }
-
-    storedCityNames.push(currentCityInfo)
-    localStorage.setItem("city", JSON.stringify(storedCityNames));
-
-
 }
 
 
-
-savedCitiesList()
-
-function savedCitiesList() {
-
-    var storedCityNames = JSON.parse(localStorage.getItem("city")) || [];
-    for (var i = 0; i < storedCityNames.length; i++) {
-        var li = document.createElement("LI")
-        li.setAttribute('class', '.search-results li')
-        resultsList.appendChild(li)
-        li.innerHTML = storedCityNames[i].Name
-
-    }
-}
 
 
 function fiveDayForecast(fiveDayUrl) {
@@ -66,7 +62,6 @@ function fiveDayForecast(fiveDayUrl) {
     fetch(fiveDayUrl)
         .then((response) => response.json())
         .then(function (data) {
-         
             var uv = document.getElementById("uv")
             var uvi = data.daily[0].uvi
             uv.innerHTML = "UV:  " + data.daily[0].uvi
@@ -102,19 +97,15 @@ function fiveDayForecast(fiveDayUrl) {
 }
 
 
-function previousSearchHistory () {
-    var storedCityNames =  JSON.parse(localStorage.getItem("city"))
-    var requestUrl = (storedCityNames[i].url)
-    console.log(storedCityNames)
-    searchCity(requestUrl)
+function previousSearchHistory (event) {
 
+    var cityName = event.target.innerHTML
+    searchCity(cityName)
+   
 }
 
-searchButton.addEventListener("click", searchCity)
+
+
+searchButton.addEventListener("click", userInput)
 resultsList.addEventListener("click", previousSearchHistory)
-
-
-
-
-
 
