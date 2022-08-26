@@ -1,24 +1,20 @@
 var searchButton = document.getElementById("search-button")
 var resultsList = document.getElementById("results-list")
 var currentWeatherList = document.getElementById("current-weather-list")
-var resultsList = document.getElementById("results-list")
-var storedCityNames = []
+var clearButton = document.getElementById("clear-input")
 var apiKey = "27c15d159618d2da5af0904826c56b48"
 var iconEl = "http://openweathermap.org/img/wn/"
-
-
+var cityName = ""
 
 
 function userInput() {
-
     var cityName = document.getElementById("user-input").value
     searchCity(cityName)
 
 }
 
 
-function previousSearchHistory(event) {
-
+function searchHistory(event) {
     var cityName = event.target.innerHTML
     searchCity(cityName)
 
@@ -26,7 +22,6 @@ function previousSearchHistory(event) {
 
 
 function searchCity(cityName) {
-
     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey + "&units=metric";
     var li = document.createElement("LI")
     li.setAttribute('class', '.search-results li')
@@ -38,9 +33,7 @@ function searchCity(cityName) {
 }
 
 
-
 function apicall(requestUrl) {
-
     fetch(requestUrl)
         .then((response) => response.json())
         .then(function (currentWeatherInfo) {
@@ -61,9 +54,7 @@ function apicall(requestUrl) {
 }
 
 
-
 function fiveDayForecast(url) {
-
     fetch(url)
         .then((response) => response.json())
         .then(function (data) {
@@ -97,13 +88,15 @@ function fiveDayForecast(url) {
 
         })
 
-
-
 }
 
+ function clearUserInput () {
+    var userInput = document.getElementById("user-input")
+    userInput.value = ""
 
-
+ }
 
 searchButton.addEventListener("click", userInput)
-resultsList.addEventListener("click", previousSearchHistory)
+resultsList.addEventListener("click", searchHistory)
+clearButton.addEventListener("click", clearUserInput)
 
